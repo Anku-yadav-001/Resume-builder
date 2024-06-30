@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Box, Input, Textarea, Button, FormControl, FormLabel } from '@chakra-ui/react';
+import React, { useContext, useState } from 'react';
+import { Box, Input, Textarea, Button, FormControl, FormLabel, Container, Heading} from '@chakra-ui/react';
 import { Editor } from '@tinymce/tinymce-react';
+import {Link as RLink} from "react-router-dom"
+import { AuthContext } from '../context/AuthContext';
 
-const ResumeForm = ({ step, setStep, setResumeData }) => {
+const ResumeForm = ({ step, setStep}) => {
+  const {setResumeData}=useContext(AuthContext)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -142,11 +145,17 @@ const ResumeForm = ({ step, setStep, setResumeData }) => {
   return (
     <Box as="form" onSubmit={handleSubmit} width="100%">
       {renderFormStep()}
+      <Container>
       {step === 5 && (
+        <>
         <Button type="submit" colorScheme="blue" width="full">
+          <RLink to="/templates">
           Generate Resume 💥
+          </RLink>
         </Button>
+       </>
       )}
+      </Container>
     </Box>
   );
 };

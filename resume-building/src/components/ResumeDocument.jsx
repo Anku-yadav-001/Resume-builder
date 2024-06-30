@@ -1,12 +1,16 @@
-import React from 'react';
-import { Box, Heading, Text, List, ListItem, Divider, Stack } from '@chakra-ui/react';
+import React, { useContext } from 'react';
+import { Box, Heading, Text, List, ListItem, Divider, Stack, Grid, GridItem, Container } from '@chakra-ui/react';
+import { AuthContext } from '../context/AuthContext';
 
-const ResumeDocument = ({ resumeData, template }) => {
-  const renderTemplate = () => {
-    switch (template) {
-      case 'Template1':
-        return (
-          <Box p={4} border="1px solid #ccc" borderRadius="8px">
+const ResumeDocument = () => {
+  const {resumeData} = useContext(AuthContext);
+  console.log(resumeData);
+   return <>
+      <Heading textAlign="center" mt="5px" color="blue">!! ``Select best template`` !!</Heading>
+     <Container maxW="80%" mt={10} p={10} height="90vh" borderRadius="20px">
+     <Grid templateColumns='repeat(3, 1fr)' gap={6} maxW="100%" >
+    <GridItem w='100%' >
+          <Box p={4} border="1px solid #ccc" borderRadius="8px" boxShadow= "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px" h="60vh">
             <Heading as="h2" size="lg" mb={4}>{resumeData.name}</Heading>
             <Text mb={2}><strong>Email:</strong> {resumeData.email}</Text>
             <Text mb={2}><strong>Phone:</strong> {resumeData.phone}</Text>
@@ -25,17 +29,16 @@ const ResumeDocument = ({ resumeData, template }) => {
             </Box>
             <Box>
               <Heading as="h3" size="md">Skills</Heading>
-              <List>
+              {/* <List>
                 {resumeData.skills.split(',').map((skill, index) => (
                   <ListItem key={index}>{skill.trim()}</ListItem>
                 ))}
-              </List>
+              </List> */}
             </Box>
           </Box>
-        );
-      case 'Template2':
-        return (
-          <Box p={4} border="2px solid #007BFF" borderRadius="8px" bg="gray.100">
+          </GridItem>
+          <GridItem w='100%'>
+          <Box p={4} border="2px solid #007BFF" borderRadius="8px" bg="gray.100" boxShadow= "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px" h="60vh">
             <Stack direction="row" align="center" mb={4}>
               <Heading as="h2" size="lg" color="#007BFF">{resumeData.name}</Heading>
               <Box ml="auto">
@@ -58,17 +61,17 @@ const ResumeDocument = ({ resumeData, template }) => {
             </Box>
             <Box>
               <Heading as="h3" size="md" color="#007BFF">Skills</Heading>
-              <List>
+              {/* <List>
                 {resumeData.skills.split(',').map((skill, index) => (
                   <ListItem key={index}>{skill.trim()}</ListItem>
-                ))}
-              </List>
+                ))} 
+              </List> */}
             </Box>
           </Box>
-        );
-      case 'Template3':
-        return (
-          <Box p={4} border="1px dashed #00C851" borderRadius="8px" bg="gray.50">
+          </GridItem>
+
+          <GridItem w='100%'>
+          <Box p={4} border="1px dashed #00C851" borderRadius="8px" bg="gray.50" boxShadow= "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px" h="60vh">
             <Heading as="h2" size="lg" mb={4} color="#00C851">{resumeData.name}</Heading>
             <Text mb={2}><strong>Email:</strong> {resumeData.email}</Text>
             <Text mb={2}><strong>Phone:</strong> {resumeData.phone}</Text>
@@ -90,21 +93,18 @@ const ResumeDocument = ({ resumeData, template }) => {
               </Box>
               <Box flex="1">
                 <Heading as="h3" size="md" color="#00C851">Skills</Heading>
-                <List>
+                {/* <List>
                   {resumeData.skills.split(',').map((skill, index) => (
                     <ListItem key={index}>{skill.trim()}</ListItem>
                   ))}
-                </List>
+                </List> */}
               </Box>
             </Stack>
           </Box>
-        );
-      default:
-        return null;
-    }
-  };
-
-  return renderTemplate();
+          </GridItem>
+       </Grid>
+     </Container>
+    </>
 };
 
 export default ResumeDocument;

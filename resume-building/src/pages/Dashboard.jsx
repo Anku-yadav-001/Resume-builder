@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Heading, Flex, Button } from '@chakra-ui/react';
 import ResumeForm from '../components/ResumeForm';
 import ResumeDocument from '../components/ResumeDocument';
 import StepperNavigation from '../components/StepperNavigation';
 import TemplateSelector from '../components/TemplateSelector';
+import { AuthContext } from '../context/AuthContext';
 
 const Dashboard = () => {
-  const [resumeData, setResumeData] = useState(null);
+  const {resumeData, setResumeData} = useContext(AuthContext)
   const [step, setStep] = useState(0);
   const [currentTemplate, setCurrentTemplate] = useState('Template1');
 
@@ -35,23 +36,23 @@ const Dashboard = () => {
       <Flex>
         <Box width="25%">
           <StepperNavigation steps={steps} currentStep={step} />
-          {step === steps.length - 1 && (
+          {/* {step === steps.length - 1 && (
             <TemplateSelector 
               templates={templates} 
               currentTemplate={currentTemplate} 
               setCurrentTemplate={setCurrentTemplate} 
             />
-          )}
+          )} */}
         </Box>
         <Flex flexDirection="column" alignItems="center" justifyContent="center" minHeight="100vh" width="100%">
       <Box width="75%" height="88vh" position="relative">
         <ResumeForm step={step} setStep={setStep} setResumeData={setResumeData} />
-        {step === steps.length - 1 && resumeData && (
+        {/* {step === steps.length - 1 && resumeData && (
           <ResumeDocument 
             resumeData={resumeData} 
             template={currentTemplate} 
           />
-        )}
+        )} */}
         <Flex
           position="absolute"
           bottom="8"
