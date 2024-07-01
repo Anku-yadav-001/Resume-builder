@@ -5,12 +5,14 @@ import Dashboard from './pages/Dashboard';
 import ResumeDocument from './components/ResumeDocument';
 
 function App() {
-  return (
-    <Routes>
+  return (<>
+      <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path='/templates' element={<ResumeDocument/>}/>
     </Routes>
+    
+    </>
   );
 }
 

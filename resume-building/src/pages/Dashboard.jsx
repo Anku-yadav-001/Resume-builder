@@ -5,6 +5,7 @@ import ResumeDocument from '../components/ResumeDocument';
 import StepperNavigation from '../components/StepperNavigation';
 import TemplateSelector from '../components/TemplateSelector';
 import { AuthContext } from '../context/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Dashboard = () => {
   const {resumeData, setResumeData} = useContext(AuthContext)
@@ -28,8 +29,8 @@ const Dashboard = () => {
 
   const handlePrevStep = () => {
     setStep((prevStep) => Math.max(prevStep - 1, 0));
-  };
-
+  }
+   
   return (
     <Box p={4} height="100vh" >
       <Heading mb={4} textAlign="center">Dashboard</Heading>
@@ -53,6 +54,7 @@ const Dashboard = () => {
             template={currentTemplate} 
           />
         )} */}
+       
         <Flex
           position="absolute"
           bottom="8"

@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 <ChakraProvider>
   <BrowserRouter>
     <AuthContextProvider>
-    <App />
+         <App/>
     </AuthContextProvider>
   </BrowserRouter>
 </ChakraProvider>

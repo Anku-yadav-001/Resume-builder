@@ -3,6 +3,7 @@ import { Box, Input, Textarea, Button, FormControl, FormLabel, Container, Headin
 import { Editor } from '@tinymce/tinymce-react';
 import {Link as RLink} from "react-router-dom"
 import { AuthContext } from '../context/AuthContext';
+import SkillsForm from './SkillForm';
 
 const ResumeForm = ({ step, setStep}) => {
   const {setResumeData}=useContext(AuthContext)
@@ -13,8 +14,14 @@ const ResumeForm = ({ step, setStep}) => {
     summary: '',
     experience: '',
     education: '',
-    skills: '',
+    skills: [],
   });
+  const handleSkillsChange = (newSkills) => {
+    setFormData({
+      ...formData,
+      skills: newSkills,
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -126,16 +133,17 @@ const ResumeForm = ({ step, setStep}) => {
         );
       case 4:
         return (
-          <FormControl mb={4}>
-            <FormLabel htmlFor="skills">Skills</FormLabel>
-            <Textarea
-              id="skills"
-              name="skills"
-              value={formData.skills}
-              onChange={handleChange}
-              placeholder="enter your skills"
-            />
-          </FormControl>
+          // <FormControl mb={4}>
+          //   <FormLabel htmlFor="skills">Skills</FormLabel>
+          //   <Textarea
+          //     id="skills"
+          //     name="skills"
+          //     value={formData.skills}
+          //     onChange={handleChange}
+          //     placeholder="enter your skills"
+          //   />
+          // </FormControl>
+          <SkillsForm skills={formData.skills} onSkillsChange={handleSkillsChange}/>
         );
       default:
         return null;
