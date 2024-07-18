@@ -7,7 +7,7 @@ import ResumeDocument from './components/ResumeDocument';
 function App() {
   return (<>
       <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/Resume-builder" exact element={<Home/>} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path='/templates' element={<ResumeDocument/>}/>
     </Routes>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, Text, Flex, VStack } from '@chakra-ui/react';
-
+import {Link} from "react-router-dom"
 const StepperNavigation = ({ steps, currentStep }) => {
   return (
     <VStack spacing={4} align="stretch">
+    <Link to="/Resume-builder" style={{color:"blue"}}>&#60; Back</Link>
       {steps.map((step, index) => (
         <Box key={index} position="relative" textAlign="center">
           <Box
